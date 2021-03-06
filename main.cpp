@@ -12,6 +12,12 @@ void printAllValues(ListNode* list) {
     }
     cout << "nullptr" << endl;
 }
+/*
+    1. Check the current node
+    2. If the current address is in the address Vector, then return true
+    3. Otherwise, move on to the next one and repeat
+    4. Return false at the end if loop was never exited
+*/
 bool isCyclical(ListNode* list) {
     vector<ListNode*> addresses = {};
     ListNode* current = list;
@@ -26,13 +32,6 @@ bool isCyclical(ListNode* list) {
 }
 
 int main() {
-    /*
-        1. Check the current node
-        2. If the current address is in the address Vector, then return true
-        3. Otherwise, move on to the next one and repeat
-        4. Return false at the end if loop was never exited
-    */
-
     ListNode* one = new ListNode{1, nullptr};
     ListNode* two = new ListNode{2, nullptr};
     ListNode* three = new ListNode{3, nullptr};
