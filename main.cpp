@@ -1,4 +1,6 @@
+#include <algorithm>
 #include <iostream>
+#include <vector>
 #include "list_node.hpp"
 using namespace std;
 
@@ -10,6 +12,18 @@ void printAllValues(ListNode* list) {
     }
     cout << "nullptr" << endl;
 }
+bool isCyclical(ListNode* list) {
+    vector<ListNode*> addresses = {};
+    ListNode* current = list;
+    while(current != nullptr) {
+        if(find(addresses.begin(), addresses.end(), *&current) != addresses.end()) {
+            return true;
+        }
+        addresses.push_back(*&current);
+        current = current->next;
+    }
+    return false;
+}
 
 int main() {
     /*
@@ -17,18 +31,7 @@ int main() {
         2. If the current address is in the address Vector, then return true
         3. Otherwise, move on to the next one and repeat
         4. Return false at the end if loop was never exited
-    // */
-    // ListNode* link = new ListNode{
-    //     1, new ListNode{2, 
-    //         new ListNode{3, 
-    //             new ListNode{4, 
-    //                 new ListNode{5, 
-    //                     nullptr
-    //                 }
-    //             }
-    //         }
-    //     }
-    // };
+    */
 
     ListNode* one = new ListNode{1, nullptr};
     ListNode* two = new ListNode{2, nullptr};
@@ -41,5 +44,5 @@ int main() {
     four->next = five;
     five->next = three;
 
-    printAllValues(one);
+    cout << isCyclical(one) << endl;
 }
