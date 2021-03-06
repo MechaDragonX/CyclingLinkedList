@@ -2,6 +2,15 @@
 #include "list_node.hpp"
 using namespace std;
 
+void printAllValues(ListNode* list) {
+    ListNode* current = list;
+    while(current != nullptr) {
+        cout << current->value << " => ";
+        current = current->next;
+    }
+    cout << "nullptr" << endl;
+}
+
 int main() {
     /*
         1. Check the current node
@@ -32,10 +41,5 @@ int main() {
     four->next = five;
     five->next = three;
 
-    ListNode* current = one;
-    while(current != nullptr) {
-        cout << current->value << " => ";
-        current = current->next;
-    }
-    cout << "nullptr" << endl;
+    printAllValues(one);
 }
